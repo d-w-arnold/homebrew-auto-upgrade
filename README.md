@@ -1,8 +1,12 @@
 # Homebrew Auto-Update Tool
 
+![Homebrew Auto-Update Tool Demo](demo/demo_input.png)
+
 Add the following lines to your `~/.bashrc`, `~/.zshrc`, etc. file(s):
 
-(replace `<path>` with the absolute path to this Github project repo)
+(**IMPORTANT**: replace `<path>` with the absolute path to this Github project repo)
+
+(`UPDATE_HOMEBREW_DAYS` defaults to 7 days, if unset)
 
 ```shell
 # ---------
