@@ -10,6 +10,11 @@ info_tag="INFO"
 warning_tag="WARN"
 sep=":"
 
+# Homebrew auto-update steps
+function homebrew_updater() {
+  brew update && brew upgrade && brew upgrade --cask --greedy
+}
+
 function debug_logger_reset() {
   printf "%s \n%s \n" "Debug Logger" "-----------------------" >"${debug_file_path}"
 }
@@ -25,12 +30,8 @@ function current_epoch() {
 }
 
 function update_last_updated_file() {
+  debug_logger "${info_tag}" "Updating '${last_updated_file_path}'."
   echo "LAST_EPOCH=$(current_epoch)" >"${last_updated_file_path}"
-}
-
-function homebrew_updater() {
-  # Homebrew update steps
-  brew update && brew upgrade && brew upgrade --cask --greedy
 }
 
 function update_homebrew() {
@@ -89,7 +90,7 @@ function main() {
     debug_logger "${warning_tag}" "Script exiting unsuccessfully (2)"
     return
   else
-    debug_logger "${info_tag}" "Enough time has passed, loading Homebrew update prompt."
+    debug_logger "${info_tag}" "Enough time has passed, loading Homebrew auto-update prompt."
   fi
 
   # Load homebrew update prompt.

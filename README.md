@@ -2,7 +2,9 @@
 
 ![Homebrew Auto-Update Tool Demo](demo/demo_input.png)
 
-Add the following lines to your `~/.bashrc`, `~/.zshrc`, etc. file(s):
+### Setup
+
+1) Add the following lines to your `~/.bashrc`, `~/.zshrc`, etc. file(s):
 
 (**IMPORTANT**: replace `<path>` with the absolute path to this Github project repo)
 
@@ -22,3 +24,13 @@ export UPDATE_HOMEBREW_PATH=<path>
 # Homebrew auto-update script
 source $UPDATE_HOMEBREW_PATH/homebrew-updater.sh
 ```
+
+This Homebrew auto-update tool also stores a `.brew-last-update` file in your user's home directory, which contains a record of when the user was last prompted to run the Homebrew auto-update tool.
+
+#### (Optional)
+
+2) You can edit the `homebrew_updater()` function, at line 14 in `homebrew-updater.sh`, to define your own Homebrew auto-update steps.
+
+### Debug Logger
+
+Each time your `~/.bashrc`, `~/.zshrc`, etc. file(s) are loaded, simple info and warning logs are sent to `debug.log`, in this Git project repo. 
