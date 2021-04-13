@@ -49,7 +49,7 @@ function update_homebrew_prompt() {
   while read -t -k 1 option; do true; done
   [[ "$option" != $'\n' ]] || [[ "$option" != "" ]] && echo
 
-  echo -n "[Homebrew] Would you like to update? [Y/n] "
+  echo -n "[Homebrew] Would you like to upgrade all packages? [Y/n] "
   read -r -k 1 option
   [[ "$option" != $'\n' ]] && echo
   case "$option" in

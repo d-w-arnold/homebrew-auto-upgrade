@@ -1,6 +1,6 @@
-# Homebrew Auto-Update Tool
+# Homebrew Package Auto-Upgrade Tool
 
-![Homebrew Auto-Update Tool Demo](demo/demo_input.png)
+![Homebrew Package Auto-Upgrade Tool Demo](demo/demo_input.png)
 
 ### Setup
 
@@ -12,7 +12,7 @@
 
 ```shell
 # ---------
-# Homebrew Auto-Update Config
+# Homebrew Package Auto-Upgrade Config
 # ---------
 
 # Change how often to auto-update Homebrew (in days)
@@ -25,12 +25,15 @@ export UPDATE_HOMEBREW_PATH=<path>
 source $UPDATE_HOMEBREW_PATH/homebrew-updater.sh
 ```
 
-This Homebrew auto-update tool also stores a `.brew-last-update` file in your user's home directory, which contains a record of when the user was last prompted to run the Homebrew auto-update tool.
+This Homebrew package auto-upgrade tool also stores a `.brew-last-update` file in your user's home directory, which
+contains a record of when the user was last prompted to run the Homebrew auto-update tool.
 
 #### (Optional)
 
-2) You can edit the `homebrew_updater()` function, at line 14 in `homebrew-updater.sh`, to define your own Homebrew auto-update steps.
+2) You can edit the `homebrew_updater()` function, at line 14 in `homebrew-updater.sh`, to define your own Homebrew
+   package auto-upgrade steps.
 
 ### Debug Logger
 
-Each time your `~/.bashrc`, `~/.zshrc`, etc. file(s) are loaded, simple info and warning logs are sent to `debug.log`, in this Git project repo. 
+Each time your `~/.bashrc`, `~/.zshrc`, etc. file(s) are loaded, simple info and warning logs are sent to `debug.log`,
+in this Git project repo. 
