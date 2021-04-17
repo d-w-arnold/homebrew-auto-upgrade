@@ -9,14 +9,17 @@ debug_file_path="${UPDATE_HOMEBREW_PATH:-$(pwd)}/debug.log"
 info_tag="INFO"
 warning_tag="WARN"
 sep=":"
+lineDash="-----------------------"
 
 # Homebrew auto-update steps
 function homebrew_updater() {
-  brew update && brew upgrade && brew upgrade --cask --greedy
+  command="brew update && brew upgrade && brew upgrade --cask --greedy"
+  printf "%s\nRunning upgrade command: %s\n%s\n" "${lineDash}" "${command}" "${lineDash}"
+  eval "${command}"
 }
 
 function debug_logger_reset() {
-  printf "%s \n%s \n" "Debug Logger" "-----------------------" >"${debug_file_path}"
+  printf "%s \n%s \n" "Debug Logger" "${lineDash}" >"${debug_file_path}"
 }
 
 function debug_logger() {
