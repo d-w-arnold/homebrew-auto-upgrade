@@ -26,7 +26,7 @@ source $UPDATE_HOMEBREW_PATH/homebrew-updater.sh
 ```
 
 This Homebrew package auto-upgrade tool also stores a `.brew-last-update` file in your user's home directory, which
-contains a record of when the user was last prompted to run the Homebrew auto-update tool.
+contains a record of when the user was last prompted to run the Homebrew auto-upgrade tool.
 
 #### (Optional)
 
