@@ -4,6 +4,7 @@
 last_updated_file=".brew-last-update"
 last_updated_file_path="$HOME/${last_updated_file}"
 debug_file_path="${UPDATE_HOMEBREW_PATH:-$(pwd)}/debug.log"
+old_last_updated_file_path_content=$(head -n 1 "${last_updated_file_path}")
 
 # Debug logger syntax
 info_tag="INFO"
@@ -33,15 +34,20 @@ function current_epoch() {
 }
 
 function update_last_updated_file() {
-  debug_logger "${info_tag}" "Updating '${last_updated_file_path}'."
-  echo "LAST_EPOCH=$(current_epoch)" >"${last_updated_file_path}"
+  last_epoch=$(current_epoch)
+  debug_logger "${info_tag}" "Updating '${last_updated_file_path}' to: '${last_epoch}'."
+  echo "LAST_EPOCH=${last_epoch}" >"${last_updated_file_path}"
+}
+
+function reset_last_updated_file() {
+  debug_logger "${info_tag}" "Homebrew upgrade returned non-zero exit code, resetting '${last_updated_file_path}' to: '$old_last_updated_file_path_content'."
+  echo "$old_last_updated_file_path_content" >"${last_updated_file_path}"
 }
 
 function update_homebrew() {
-  homebrew_updater
-  # shellcheck disable=SC2181
-  if [[ "$?" == 0 ]]; then
-    update_last_updated_file
+  update_last_updated_file
+  if ! homebrew_updater; then
+    reset_last_updated_file
   fi
 }
 
