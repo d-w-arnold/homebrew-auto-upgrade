@@ -14,7 +14,7 @@ lineDash="-----------------------"
 
 # Homebrew auto-update steps
 function homebrew_updater() {
-  command="brew update && brew upgrade && brew upgrade --cask --greedy"
+  command="brew update && brew upgrade && brew upgrade --cask --greedy && brew cleanup"
   printf "%s\nRunning upgrade command: %s\n%s\n" "${lineDash}" "${command}" "${lineDash}"
   eval "${command}"
 }
